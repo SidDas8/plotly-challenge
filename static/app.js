@@ -27,16 +27,27 @@ function charts(ID) {
     // Read data
     d3.json("data/samples.json").then(data => {
 
-        // Save all samples
-        var samples = data.samples
+        // Save list of samples
+        var samples = data.samples;
         console.log(samples)
 
-        // Filter samples to one sample
+        // Filter list to one sample
         var single_sample = samples.filter(bellybutton => bellybutton.id == ID)[0];
         console.log(single_sample)
 
+        // Save values
+        var sample_values = single_sample.sample_values
+        console.log(sample_values)
 
-    })
-}
+        // Save IDs
+        var otu_ids = single_sample.otu_ids
+        console.log(otu_ids)
+
+        // Save labels
+        var otu_labels = single_sample.otu_labels
+        console.log(otu_labels)
+
+    });
+};
 
 init();
