@@ -1,7 +1,7 @@
 // Function to initialize page
 function init() {
 
-    // Read data and save ID #s
+    // Read data and save Test Subject ID #s
     d3.json("data/samples.json").then(data => {
         var sample_names = data.names;
         console.log(sample_names)
@@ -21,7 +21,7 @@ function init() {
 
 };
 
-// Function to build charts
+// Function to build charts using Test Subject ID #
 function charts(ID) {
 
     // Read data
@@ -31,23 +31,27 @@ function charts(ID) {
         var samples = data.samples;
         console.log(samples)
 
-        // Filter list to one sample
+        // Filter list to one sample which has matching ID #
         var single_sample = samples.filter(bellybutton => bellybutton.id == ID)[0];
         console.log(single_sample)
 
         // Save values
-        var sample_values = single_sample.sample_values
+        var sample_values = single_sample.sample_values;
         console.log(sample_values)
 
         // Save IDs
-        var otu_ids = single_sample.otu_ids
+        var otu_ids = single_sample.otu_ids;
         console.log(otu_ids)
 
         // Save labels
-        var otu_labels = single_sample.otu_labels
+        var otu_labels = single_sample.otu_labels;
         console.log(otu_labels)
 
-        // Trace1 for bar chart
+        ///////////////
+        // Bar chart //
+        ///////////////
+
+        // Trace for bar chart
         var trace1 = {
             x: sample_values.slice(0, 10).reverse(),
             y: otu_ids.slice(0, 10).map(id => `ID ${id}`).reverse(),
@@ -56,15 +60,15 @@ function charts(ID) {
             orientation: "h"
         };
 
-        // Print to console to confirm correct values
+        // Confirm correct bar chart values
         console.log(sample_values.slice(0, 10).reverse())
         console.log(otu_ids.slice(0, 10).reverse())
         console.log(otu_labels.slice(0, 10).reverse())
 
         // Convert trace1 object into array for plotting
-        var data1 = [trace1]
+        var data1 = [trace1];
 
-        // Apply the group bar mode to the layout
+        // Define the plot layout
         var layout1 = {
             title: "Individual Test Subject's Top 10 OTUs",
             xaxis: { title: "Sample Value" },
@@ -77,12 +81,14 @@ function charts(ID) {
             }
         };
 
-
         // Render the plot to the div tag with id "bar"
         Plotly.newPlot("bar", data1, layout1);
 
+        //////////////////
+        // Bubble chart //
+        //////////////////
 
-        // Trace2 for bubble chart
+        // Trace for bar chart
 
     });
 };
