@@ -50,24 +50,21 @@ function charts(ID) {
         // Trace1 for bar chart
         var trace1 = {
             x: sample_values.slice(0, 10).reverse(),
-            y: otu_ids.slice(0, 10).reverse(),
-            text: otu_labels.slice(0, 10).reverse(),
+            y: otu_ids.slice(0, 10).map(id => `ID ${id}`),
+            text: otu_labels.slice(0, 10),
             type: "bar",
             orientation: "h"
         };
 
         // Convert trace1 object into array for plotting
         var data1 = [trace1]
+        // console.log(sample_values.slice(0, 10).reverse())
+        // console.log(otu_ids.slice(0, 10).reverse())
+        // console.log(otu_labels.slice(0, 10).reverse())
 
         // Apply the group bar mode to the layout
         var layout = {
-            title: "OTUs Found",
-            margin: {
-            l: 100,
-            r: 100,
-            t: 100,
-            b: 100
-            }
+            title: "OTUs Found"
         };
 
 
