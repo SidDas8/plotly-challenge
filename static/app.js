@@ -12,9 +12,9 @@ function init() {
         // Append Test Subject ID #s to dropdown menu
         sample_names.forEach((name) => {
             option_selector.append("option").text(name).property("value", name);
-        });
+        })
 
-    });
+    })
 
 }
 
