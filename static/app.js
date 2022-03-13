@@ -21,7 +21,14 @@ function init() {
 // Function to build charts
 function charts() {
 
+    // Read data and save samples
+    d3.json("data/samples.json").then(data => {
 
+        samples = data.samples
+        console.log(samples)
+
+    })
 }
 
 init();
+charts();
