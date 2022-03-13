@@ -14,21 +14,29 @@ function init() {
             option_selector.append("option").text(ID).property("value", ID);
         });
 
+        // Call function to build initial chart for ID# 940
+        charts(sample_names[0])
+
     });
 
 };
 
 // Function to build charts
-function charts() {
+function charts(ID) {
 
-    // Read data and save samples
+    // Read data
     d3.json("data/samples.json").then(data => {
 
-        samples = data.samples
+        // Save all samples
+        var samples = data.samples
         console.log(samples)
+
+        // Filter samples to one sample
+        var single_sample = samples.filter(bellybutton => bellybutton.id == ID)[0];
+        console.log(single_sample)
+
 
     })
 }
 
 init();
-charts();
