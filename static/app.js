@@ -2,7 +2,7 @@
 function init() {
 
     // Read data and save ID #s
-    d3.json("../data/samples.json").then((data) => {
+    d3.json("data/samples.json").then((data) => {
         var sample_names = data.names;
         console.log(sample_names)
 
