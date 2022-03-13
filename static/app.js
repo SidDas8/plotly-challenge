@@ -49,9 +49,9 @@ function charts(ID) {
 
         // Trace1 for bar chart
         var trace1 = {
-            x: sample_values,
-            y: otu_ids,
-            text: otu_labels,
+            x: sample_values.slice(0, 10).reverse(),
+            y: otu_ids.slice(0, 10).reverse(),
+            text: otu_labels.slice(0, 10).reverse(),
             type: "bar",
             orientation: "h"
         };
