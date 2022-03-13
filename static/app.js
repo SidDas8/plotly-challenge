@@ -47,6 +47,34 @@ function charts(ID) {
         var otu_labels = single_sample.otu_labels
         console.log(otu_labels)
 
+        // Trace1 for bar chart
+        var trace1 = {
+            x: sample_values,
+            y: otu_ids,
+            text: otu_labels,
+            type: "bar",
+            orientation: "h"
+        };
+
+        // Convert trace1 object into array for plotting
+        var data1 = [trace1]
+
+        // Apply the group bar mode to the layout
+        var layout = {
+            title: "OTUs Found",
+            margin: {
+            l: 100,
+            r: 100,
+            t: 100,
+            b: 100
+            }
+        };
+
+
+        // Render the plot to the div tag with id "plot"
+        Plotly.newPlot("bar", data1, layout);
+        // Trace2 for bubble chart
+
     });
 };
 
