@@ -114,6 +114,7 @@ function charts(ID) {
     });
 };
 
+// Function to build metadata using Test Subject ID #
 function metadata(ID){
 
     // Read data
@@ -130,11 +131,28 @@ function metadata(ID){
         // Reference the HTML metadata element
         var metadata_selector = d3.select("#sample-metadata");
 
+        // Clear metadata
+        metadata_selector.html("")
+
         // Append key-value pairs to HTML metadata element
         Object.entries(single_metadata).forEach(([key, value]) => {
             metadata_selector.append("h5").text(`${key}: ${value}`);
         });
     });
 };
+
+// On change to the DOM, call getData()
+d3.select("#selDataset").on("change", update);
+
+// Function called by DOM changes
+function update() {
+    
+    // Assign the value of the dropdown menu option to a variable
+    var dropdownMenu = d3.select("#selDataset");    
+    var subject_id = dropdownMenu.property("value");
+    console.log(subject_id)
+
+};
+
 
 init();
