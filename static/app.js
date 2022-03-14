@@ -14,8 +14,11 @@ function init() {
             option_selector.append("option").text(ID).property("value", ID);
         });
 
-        // Call function to build initial chart for ID# 940
+        // Call function to build initial charts for ID# 940
         charts(sample_names[0])
+
+        // Call function to build metadatafor ID# 940
+        metadata(sample_names[0])
 
     });
 
@@ -108,6 +111,17 @@ function charts(ID) {
         // Render the plot to the div tag with id "bubble"
         Plotly.newPlot("myDiv", data2, layout2);
           
+    });
+};
+
+function metadata(){
+
+    // Read data
+    d3.json("data/samples.json").then(data => {
+        
+        // Save list of samples
+        var metadata = data.metadata
+        console.log(metadata)
     });
 };
 
