@@ -114,7 +114,7 @@ function charts(ID) {
     });
 };
 
-function metadata(){
+function metadata(ID){
 
     // Read data
     d3.json("data/samples.json").then(data => {
@@ -127,8 +127,13 @@ function metadata(){
         var single_metadata = metadata.filter(bellybutton => bellybutton.id == ID)[0];
         console.log(single_metadata)
 
-        // Reference the HTML dropdown select element
-        metadata_selector = d3.select("#sample-metadata");
+        // Reference the HTML metadata element
+        var metadata_selector = d3.select("#sample-metadata");
+
+        // Append key-value pairs to HTML metadata element
+        Object.entries(single_metadata).forEach(([key, value]) => {
+            metadata_selector.append("h5").text(`${key}: ${value}`);
+        });
     });
 };
 
