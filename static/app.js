@@ -119,9 +119,16 @@ function metadata(){
     // Read data
     d3.json("data/samples.json").then(data => {
         
-        // Save list of samples
+        // Save list of metadata
         var metadata = data.metadata
         console.log(metadata)
+
+        // Filter list to one individual's metadata, which has matching ID #
+        var single_metadata = metadata.filter(bellybutton => bellybutton.id == ID)[0];
+        console.log(single_metadata)
+
+        // Reference the HTML dropdown select element
+        metadata_selector = d3.select("#sample-metadata");
     });
 };
 
