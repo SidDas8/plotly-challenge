@@ -152,6 +152,12 @@ function update() {
     var subject_id = dropdownMenu.property("value");
     console.log(subject_id)
 
+    // Call function to build initial charts for ID# 940
+    charts(subject_id)
+
+    // Call function to build metadatafor ID# 940
+    metadata(subject_id)
+
 };
 
 
