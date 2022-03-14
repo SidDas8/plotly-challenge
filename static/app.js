@@ -72,13 +72,7 @@ function charts(ID) {
         var layout1 = {
             title: "Individual Test Subject's Top 10 OTUs",
             xaxis: { title: "Sample Value" },
-            yaxis: { title: "OTU ID #s"},
-            margin: {
-              l: 100,
-              r: 100,
-              t: 100,
-              b: 100
-            }
+            yaxis: { title: "OTU ID #"}
         };
 
         // Render the plot to the div tag with id "bar"
@@ -90,27 +84,29 @@ function charts(ID) {
         // Found help from https://plotly.com/javascript/bubble-charts/
         
         // Trace for bar chart
-        var trace1 = {
-            x: [1, 2, 3, 4],
-            y: [10, 11, 12, 13],
-            text: ['A<br>size: 40', 'B<br>size: 60', 'C<br>size: 80', 'D<br>size: 100'],
+        var trace2 = {
+            x: otu_ids,
+            y: sample_values,
+            text: otu_labels,
             mode: 'markers',
             marker: {
-              color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
-              size: [40, 60, 80, 100]
+              color: otu_ids,
+              size: sample_values
             }
         };
         
-        var data = [trace1];
+        // Convert trace2 object into array for plotting
+        var data2 = [trace2];
         
-        var layout = {
-        title: 'Bubble Chart Hover Text',
-        showlegend: false,
-        height: 600,
-        width: 600
+        // Define the plot layout
+        var layout2 = {
+        title: "Belly Button Bacteria Samples",
+        xaxis: { title: "OTU ID #" },
+        yaxis: { title: "Sample Value"}
         };
         
-        Plotly.newPlot('myDiv', data, layout);
+        // Render the plot to the div tag with id "bubble"
+        Plotly.newPlot('bubble', data2, layout2);
           
     });
 };
