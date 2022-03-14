@@ -106,7 +106,7 @@ function charts(ID) {
         };
         
         // Render the plot to the div tag with id "bubble"
-        Plotly.newPlot('bubble', data2, layout2);
+        Plotly.newPlot("bubble", data2, layout2);
           
     });
 };
